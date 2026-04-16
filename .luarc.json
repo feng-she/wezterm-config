@@ -1,7 +1,5 @@
 {
-    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-    "runtime.version": "Lua 5.4",
+    "runtime.version": "5.4",
     "workspace.checkThirdParty": false,
-    "hint.enable": true,
-    "format.enable": false
+    "hint.enable": true
 }

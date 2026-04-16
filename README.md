@@ -212,17 +212,14 @@
 
 ### All Key Bindings
 
-Most of the key bindings revolve around a <kbd>SUPER</kbd> and <kbd>SUPER_REV</kbd>(super reversed) keys.<br>
+Most of the key bindings revolve around <kbd>SUPER</kbd> and <kbd>SUPER_REV</kbd> (super reversed).<br>
 
-- On MacOs:
-  - <kbd>SUPER</kbd> ⇨ <kbd>Super</kbd>
-  - <kbd>SUPER_REV</kbd> ⇨ <kbd>Super</kbd>+<kbd>Ctrl</kbd>
-- On Windows and Linux
-  - <kbd>SUPER</kbd> ⇨ <kbd>Alt</kbd>
-  - <kbd>SUPER_REV</kbd> ⇨ <kbd>Alt</kbd>+<kbd>Ctrl</kbd>
-
-> To avoid confusion when switching between different OS and to avoid conflicting<br>
-> with OS's built-in keyboard shortcuts.
+- On macOS:
+  - <kbd>SUPER</kbd> ⇨ <kbd>Command</kbd>
+  - <kbd>SUPER_REV</kbd> ⇨ <kbd>Command</kbd>+<kbd>Ctrl</kbd>
+- On Windows and Linux:
+  - <kbd>SUPER</kbd> ⇨ <kbd>Super</kbd>/<kbd>Win</kbd>
+  - <kbd>SUPER_REV</kbd> ⇨ <kbd>Super</kbd>/<kbd>Win</kbd>+<kbd>Ctrl</kbd>
 
 - On all platforms: <kbd>LEADER</kbd> ⇨ <kbd>SUPER_REV</kbd>+<kbd>Space</kbd>
 
@@ -244,10 +241,14 @@ Most of the key bindings revolve around a <kbd>SUPER</kbd> and <kbd>SUPER_REV</k
 
 #### Copy+Paste
 
-| Keys                                          | Action               |
-| --------------------------------------------- | -------------------- |
-| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>c</kbd> | Copy to Clipboard    |
-| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>v</kbd> | Paste from Clipboard |
+| Keys                                          | Action                                                                    |
+| --------------------------------------------- | ------------------------------------------------------------------------- |
+| <kbd>Ctrl</kbd>+<kbd>c</kbd>                  | Copy selection to Clipboard. If there is no selection, send `Ctrl+c`.    |
+| <kbd>Ctrl</kbd>+<kbd>v</kbd>                  | Paste from Clipboard                                                      |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>c</kbd> | Copy to Clipboard                                                         |
+| <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>v</kbd> | Paste from Clipboard                                                      |
+| <kbd>Cmd</kbd>+<kbd>c</kbd> <sub>(macOS)</sub> | Copy to Clipboard                                                         |
+| <kbd>Cmd</kbd>+<kbd>v</kbd> <sub>(macOS)</sub> | Paste from Clipboard                                                      |
 
 &nbsp;
 

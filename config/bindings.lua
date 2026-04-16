@@ -3,15 +3,10 @@ local platform = require('utils.platform')
 local backdrops = require('utils.backdrops')
 local act = wezterm.action
 
-local mod = {}
-
-if platform.is_mac then
-   mod.SUPER = 'SUPER'
-   mod.SUPER_REV = 'SUPER|CTRL'
-elseif platform.is_win or platform.is_linux then
-   mod.SUPER = 'ALT' -- to not conflict with Windows key shortcuts
-   mod.SUPER_REV = 'ALT|CTRL'
-end
+local mod = {
+   SUPER = 'SUPER',
+   SUPER_REV = 'SUPER|CTRL',
+}
 
 -- stylua: ignore
 local keys = {
@@ -54,6 +49,20 @@ local keys = {
    { key = 'Backspace',  mods = mod.SUPER,     action = act.SendString '\u{15}' },
 
    -- copy/paste --
+   {
+      key = 'c',
+      mods = 'CTRL',
+      action = wezterm.action_callback(function(window, pane)
+         local selected_text = window:get_selection_text_for_pane(pane)
+         if selected_text and selected_text ~= '' then
+            window:perform_action(act.CopyTo('Clipboard'), pane)
+            window:perform_action(act.ClearSelection, pane)
+         else
+            window:perform_action(act.SendKey({ key = 'c', mods = 'CTRL' }), pane)
+         end
+      end),
+   },
+   { key = 'v',          mods = 'CTRL',        action = act.PasteFrom('Clipboard') },
    { key = 'c',          mods = 'CTRL|SHIFT',  action = act.CopyTo('Clipboard') },
    { key = 'v',          mods = 'CTRL|SHIFT',  action = act.PasteFrom('Clipboard') },
 
@@ -219,6 +228,11 @@ local keys = {
    },
 }
 
+if platform.is_mac then
+   table.insert(keys, { key = 'c', mods = mod.SUPER, action = act.CopyTo('Clipboard') })
+   table.insert(keys, { key = 'v', mods = mod.SUPER, action = act.PasteFrom('Clipboard') })
+end
+
 -- stylua: ignore
 local key_tables = {
    resize_font = {
@@ -239,11 +253,22 @@ local key_tables = {
 }
 
 local mouse_bindings = {
+   -- Complete a text selection by copying it to the system clipboard.
+   {
+      event = { Up = { streak = 1, button = 'Left' } },
+      mods = 'NONE',
+      action = act.CompleteSelection('Clipboard'),
+   },
    -- Ctrl-click will open the link under the mouse cursor
    {
       event = { Up = { streak = 1, button = 'Left' } },
       mods = 'CTRL',
       action = act.OpenLinkAtMouseCursor,
+   },
+   {
+      event = { Down = { streak = 1, button = 'Left' } },
+      mods = 'CTRL',
+      action = act.Nop,
    },
 }
 
