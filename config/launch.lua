@@ -8,17 +8,18 @@ local options = {
 if platform.is_win then
    local nu_integration_fix_cmd =
       '$env.config = ($env.config | upsert shell_integration.osc133 false)'
-   options.default_prog = { 'nu', '-l', '-e', nu_integration_fix_cmd }
+   options.default_prog = { 'fish', '-l' }
    options.launch_menu = {
       { label = 'PowerShell Core', args = { 'pwsh', '-NoLogo' } },
       { label = 'PowerShell Desktop', args = { 'powershell' } },
       { label = 'Command Prompt', args = { 'cmd' } },
+      { label = 'Fish', args = { 'fish', '-l' } },
       { label = 'Nushell', args = { 'nu', '-l', '-e', nu_integration_fix_cmd } },
       { label = 'Msys2', args = { 'ucrt64.cmd' } },
       { label = 'Git Bash', args = { 'bash' } },
    }
 elseif platform.is_mac then
-   options.default_prog = { '/opt/homebrew/bin/nu', '-l' }
+   options.default_prog = { '/opt/homebrew/bin/fish', '-l' }
    options.launch_menu = {
       { label = 'Bash', args = { 'bash', '-l' } },
       { label = 'Fish', args = { '/opt/homebrew/bin/fish', '-l' } },
