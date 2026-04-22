@@ -218,8 +218,8 @@ Most of the key bindings revolve around <kbd>SUPER</kbd> and <kbd>SUPER_REV</kbd
   - <kbd>SUPER</kbd> ⇨ <kbd>Command</kbd>
   - <kbd>SUPER_REV</kbd> ⇨ <kbd>Command</kbd>+<kbd>Ctrl</kbd>
 - On Windows and Linux:
-  - <kbd>SUPER</kbd> ⇨ <kbd>Super</kbd>/<kbd>Win</kbd>
-  - <kbd>SUPER_REV</kbd> ⇨ <kbd>Super</kbd>/<kbd>Win</kbd>+<kbd>Ctrl</kbd>
+  - <kbd>SUPER</kbd> ⇨ <kbd>Alt</kbd>
+  - <kbd>SUPER_REV</kbd> ⇨ <kbd>Alt</kbd>+<kbd>Ctrl</kbd>
 
 - On all platforms: <kbd>LEADER</kbd> ⇨ <kbd>SUPER_REV</kbd>+<kbd>Space</kbd>
 

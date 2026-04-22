@@ -3,10 +3,15 @@ local platform = require('utils.platform')
 local backdrops = require('utils.backdrops')
 local act = wezterm.action
 
-local mod = {
-   SUPER = 'SUPER',
-   SUPER_REV = 'SUPER|CTRL',
-}
+local mod = {}
+
+if platform.is_mac then
+   mod.SUPER = 'SUPER'
+   mod.SUPER_REV = 'SUPER|CTRL'
+elseif platform.is_win or platform.is_linux then
+   mod.SUPER = 'ALT'
+   mod.SUPER_REV = 'ALT|CTRL'
+end
 
 -- stylua: ignore
 local keys = {
@@ -70,7 +75,6 @@ local keys = {
    -- tabs: spawn+close
    { key = 't',          mods = mod.SUPER,     action = act.SpawnTab('DefaultDomain') },
    { key = 't',          mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName = 'wsl:ubuntu-fish' }) },
-   { key = 'w',          mods = mod.SUPER_REV, action = act.CloseCurrentTab({ confirm = false }) },
 
    -- tabs: navigation
    { key = '[',          mods = mod.SUPER,     action = act.ActivateTabRelative(-1) },
@@ -227,6 +231,8 @@ local keys = {
       }),
    },
 }
+
+table.insert(keys, { key = 'w', mods = mod.SUPER_REV, action = act.CloseCurrentTab({ confirm = false }) })
 
 if platform.is_mac then
    table.insert(keys, { key = 'c', mods = mod.SUPER, action = act.CopyTo('Clipboard') })

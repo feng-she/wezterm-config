@@ -8,7 +8,7 @@ local options = {
 if platform.is_win then
    local nu_integration_fix_cmd =
       '$env.config = ($env.config | upsert shell_integration.osc133 false)'
-   options.default_prog = { 'fish', '-l' }
+   options.default_prog = { 'pwsh', '-NoLogo' }
    options.launch_menu = {
       { label = 'PowerShell Core', args = { 'pwsh', '-NoLogo' } },
       { label = 'PowerShell Desktop', args = { 'powershell' } },
