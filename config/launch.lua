@@ -8,11 +8,14 @@ local options = {
 if platform.is_win then
    local nu_integration_fix_cmd =
       '$env.config = ($env.config | upsert shell_integration.osc133 false)'
-   options.default_prog = { 'pwsh', '-NoLogo' }
+   local windows_powershell = { 'pwsh', '-NoLogo', '-NoProfile' }
+   local fallback_powershell = { 'powershell.exe', '-NoLogo', '-NoProfile' }
+
+   options.default_prog = windows_powershell
    options.launch_menu = {
-      { label = 'PowerShell Core', args = { 'pwsh', '-NoLogo' } },
-      { label = 'PowerShell Desktop', args = { 'powershell' } },
-      { label = 'Command Prompt', args = { 'cmd' } },
+      { label = 'Windows PowerShell', args = windows_powershell },
+      { label = 'Windows PowerShell 5.1', args = fallback_powershell },
+      { label = 'Command Prompt', args = { 'cmd.exe' } },
       { label = 'Fish', args = { 'fish', '-l' } },
       { label = 'Nushell', args = { 'nu', '-l', '-e', nu_integration_fix_cmd } },
       { label = 'Msys2', args = { 'ucrt64.cmd' } },
